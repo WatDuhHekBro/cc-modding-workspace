@@ -1,0 +1,20 @@
+[
+	{
+		"type":"ENTER",
+		"index":["entities",149,"settings","event"]
+	},
+	{
+		"type":"ADD_ARRAY_ELEMENT",
+		"index":16,
+		"content":{"type":"PAUSE_BGM","mode":"IMMEDIATELY"}
+	},
+	{
+		"type":"ADD_ARRAY_ELEMENT",
+		"index":17,
+		"content":{"type":"SHOW_MSG","person":{"person":"main.emilie","expression":"ANGRY"},"message":{"en_US":"And if I wasn't, \\.bad things would've happened."},"autoContinue":false}
+	},
+	{
+		"type":"EXIT",
+		"count":4
+	}
+]

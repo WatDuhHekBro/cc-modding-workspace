@@ -1,0 +1,15 @@
+[
+	{
+		"type":"ENTER",
+		"index":["face","expressions"]
+	},
+	{
+		"type":"SET_KEY",
+		"index":"HAND_POINT_ANGERY",
+		"content":{"faces":[["hand","norm","normAngry","handPoint"]]}
+	},
+	{
+		"type":"EXIT",
+		"count":2
+	}
+]

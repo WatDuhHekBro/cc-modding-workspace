@@ -1,0 +1,7 @@
+{
+	"name": "workspace",
+	"version": "4.2.0",
+	"description": "WatDuhHekBro's Workspace - Use this to keep everything in one place",
+	"plugin": "plugin.js",
+	"main": "extra.js"
+}

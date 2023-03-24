@@ -1,0 +1,42 @@
+[
+	{
+		"type":"ENTER",
+		"index":["entities",9,"settings","npcStates",1,"event",13,"thenStep"]
+	},
+	{
+		"type":"ADD_ARRAY_ELEMENT",
+		"content":{"type":"CLEAR_MSG","side":"ALL"}
+	},
+	{
+		"type":"ADD_ARRAY_ELEMENT",
+		"content":{"pos":{"x":816,"y":800},"speed":"FAST","transition":"EASE_OUT","type":"SET_CAMERA_POS","wait":true}
+	},
+	{
+		"type":"ADD_ARRAY_ELEMENT",
+		"content":{"person":{"person":"antagonists.fancyguy","expression":"ANGRY"},"type":"ADD_MSG_PERSON","side":"RIGHT"}
+	},
+	{
+		"type":"ADD_ARRAY_ELEMENT",
+		"content":{"person":{"person":"antagonists.fancyguy","expression":"ANGRY"},"message":{"en_US":"Ahem..."},"type":"SHOW_MSG"}
+	},
+	{
+		"type":"ADD_ARRAY_ELEMENT",
+		"content":{"person":{"person":"antagonists.fancyguy","expression":"SUSPICIOUS"},"message":{"en_US":"You know I can hear you from here, right?"},"type":"SHOW_MSG"}
+	},
+	{
+		"type":"ADD_ARRAY_ELEMENT",
+		"content":{"person":{"person":"antagonists.sidekick","expression":"SARCASTIC"},"type":"ADD_MSG_PERSON","side":"LEFT"}
+	},
+	{
+		"type":"ADD_ARRAY_ELEMENT",
+		"content":{"person":{"person":"antagonists.sidekick","expression":"SARCASTIC"},"message":{"en_US":"..."},"type":"SHOW_MSG"}
+	},
+	{
+		"type":"ADD_ARRAY_ELEMENT",
+		"content":{"type":"RESET_CAMERA","wait":true,"speed":"NORMAL","transition":"EASE_IN_OUT"}
+	},
+	{
+		"type":"EXIT",
+		"count":8
+	}
+]

@@ -1,0 +1,15 @@
+[
+	{
+		"type": "ENTER",
+		"index": ["entities", 436, "settings"]
+	},
+	{
+		"type": "IMPORT",
+		"index": "event",
+		"src": "mod:patches/plot-twist.json"
+	},
+	{
+		"type": "EXIT",
+		"count": 3
+	}
+]

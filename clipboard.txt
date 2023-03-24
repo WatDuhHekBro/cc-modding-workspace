@@ -1,0 +1,13 @@
+Brainstorming
+- Access through room "Corridors of Proof" where you prove you have all four elements. Vertical hallways (all in one room) like a snake for each element.
+- Floors "U1" and counting down
+- First room "Entry Test" has those pillars which react to all four elements, somehow unlocks the room by providing a respective element's puzzle element. (ice provides bubble)
+- Second room is the corridor of proof, the entry test should just be a simple four element pole test with spawning switches.
+- Then you just make puzzles with whatever you want.
+
+corridor: "Suspicious Corridor"
+entrance: "Entry Trial"
+corridor 2: "Corridor of Proof"
+???: "Trial of Convolution" (old entrance)
+
+Entry Trial will involve using the pillars at different angles to move throughout the room at different heights.

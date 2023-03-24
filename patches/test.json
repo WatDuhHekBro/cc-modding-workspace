@@ -1,0 +1,1 @@
+[{"type":"PLAY_BGM","bgm":"bossbattle1","mode":"IMMEDIATELY","volume":1},{"type":"SHOW_SIDE_MSG","person":{"person":"main.sergey","expression":"THINKING"},"message":{"en_US":"Why do I hear boss music?"}},{"type":"CHANGE_VAR_NUMBER","varName":"plot.line","changeType":"set","value":2000}]

@@ -1,0 +1,30 @@
+[
+	{
+		"type": "ENTER",
+		"index": ["entities", 7, "settings"]
+	},
+	{
+		"type": "SET_KEY",
+		"index": "map",
+		"content": "rookie-harbor.inner-corridor"
+	},
+	{
+		"type": "SET_KEY",
+		"index": "marker",
+		"content": "entrance"
+	},
+	{
+		"type": "SET_KEY",
+		"index": "name",
+		"content": "sussy"
+	},
+	{
+		"type": "SET_KEY",
+		"index": "condition",
+		"content": "true"
+	},
+	{
+		"type": "EXIT",
+		"count": 3
+	}
+]

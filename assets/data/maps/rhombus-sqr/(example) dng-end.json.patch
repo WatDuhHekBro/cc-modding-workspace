@@ -1,0 +1,15 @@
+[
+	{
+		"type":"ENTER",
+		"index":["entities",149,"settings"]
+	},
+	{
+		"type":"IMPORT",
+		"index":"event",
+		"src":"mod:patches/test.json"
+	},
+	{
+		"type":"EXIT",
+		"count":3
+	}
+]
