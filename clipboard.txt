@@ -11,3 +11,99 @@ corridor 2: "Corridor of Proof"
 ???: "Trial of Convolution" (old entrance)
 
 Entry Trial will involve using the pillars at different angles to move throughout the room at different heights.
+
+-----
+
+Tracing CIRCLE_ATTACK
+
+- "ig.ENTITY.Combatant::damage()" is only invoked when the attack lands.
+- The if statement that runs for each hitbox seems to be in "sc.CircleHitForce::update()", which is also where calls to "window.ig.perf.showHitBoxes" and "ig.debugView.addMapCircle" are made.
+	- The key moment of detection seems to be "ig.game.getEntitiesInCircle()", excluding party members.
+	- "ig.game.getEntitiesInCircle(h, e, this.yScale, this.zHeight, f, b, d, g, this.hitEntities, this.rectangular, this.checkCollision);"
+		- h = current position
+		- e = instantaneous radius
+		- f = vec2 of direction facing (null if always a circle)
+			- (0, 1) = down
+			- (0, -1) = up
+			- (-1, 0) = left
+			- (1, 0) = right
+		- b = start angle? (takes previous angle into account)
+		- d = end angle?
+		- g = whether the current target's party is the same as the player's party (not listed in call to addMapCircle())
+	- "ig.Physics::getEntitiesInCircle()"
+- https://github.com/CCDirectLink/crosscode-map-editor/blob/master/webapp/src/assets/actions.json (search CIRCLE_ATTACK)
+- Hitbox Rendering (a way to get ig context to draw like a regular JS canvas): https://github.com/dmitmel/crosscode-tweak-pack/blob/master/src/render-hitboxes.js
+
+<dir>: (startAngle, centralAngle) -- (does not take direction into account)
+- The values provided are multiplied by 2pi (unless startAngle isn't given, which then it's -centralAngle/2, and centralAngle turns into 1 if lossy (such as 0))
+- Default Neutral Melee: (-pi/2, pi)
+- Sphere Saw: (-pi, 2pi) --> (-pi/2, 7pi) --> (-pi, 2pi)
+
+Vec2 = e
+e.isAngleInRange = function(a, b, c, d) {
+	var f = Math.PI * 2,
+		c = (c % f + f) % f,
+		d = (d % f + f) % f,
+		g = e.angle(b, a);
+	e.areClockwise(b, a) || (g = f - g);
+	return c < d ? c <= g && g <= d : g <= d || g >= c
+};
+
+-----
+
+List of stuff to include:
+
+- At the bottom level of each core element, have one very long and complex puzzle to sort through. Ice = Multiple Steam Ovens (must time correctly), Wave = A ton of rotating wave blocks (must time correctly), Shock = One long string of sparks with the block that gets moved by magnets (maybe multiple that must be timed correctly?), Fire = Multiple propellers at angles and heights (so you have to traverse it) along with sliding blocks on multiple levels (maybe not so much a timing issue, but an angle issue)
+- Each section on the bottom floor has a guarded off element with the elemental shield, that unlocks the next area.
+- Also, the markings will deliberately mislead you this time.
+
+[Bergen Mine]
+- Several Switches
+- OneTimeSwitches (temporary ones, lots and lots of them)
+- BombPanels and Destructibles
+- Lots of Lorries and LorryRails with windows to shoot from
+- Ice physics in puzzles (using Scalable Props)
+
+[Faj'ro]
+- ElementPoles (Use the tall ones to start slow ball timers on ones that'll eventually affect floor 2 (or vice versa))
+- WaterBubblePanels
+- WaterBlocks (Both must freeze and heat them)
+- Timed propellers to raise OLPlatforms to different heights
+- Steam pipes and steam pipe switches which are toggled by steam propellers
+
+[So'najiz]
+- Magnetized PushPull blocks, either containing counterproductive ballchangers (all types, some counterproductive like ones that speed up the ball) or tesla transfers
+- In addition to those magnets, use an element pole from the 2nd floor to activate a magnet on the 1st floor (after some bouncing) which'll pull the block you're standing on
+
+[Zir'vitar]
+- You can only use compressed wave balls to teleport >:)
+- Lots of dynamic floating platforms
+- Some of the blocks the BounceBlock group needs to hit are the same ones the compressed wave balls use
+- Some of the wave switches will also be used to bounce other elemental puzzle elements
+- And yes, include wave teleportation blocks
+
+[Other]
+- Use elemental ball changers to obstruct certain paths rather than help
+- Element poles will have multiple element modes which will work against each other so you have to remember the right one
+- The 1st floor is based on the order of the element wheel, puzzles used are just the element themselves
+- The 2nd floor is based on the order of the temples, puzzles combine elements but are centered around a temple's theme
+- The 3rd floor is a height-based extension of the 2nd floor, the player can't access it
+- The camera moves toward one of the eight sections
+- Actually, don't use a lot of plain switches. Use other types of switches which need multiple layers of activation
+- Multi-purpose compressors and inconvenient anti-compressors for both compressor types
+- Don't include Vermillion Tower shields
+- Two concurrent BounceBlock groups, a main and a side one <--- Actually, this is cancelled, I can't set a timer to reset one of the BounceBlock groups.
+- Lorries and LorryRails are across each puzzle group.
+- An odd quirk could be that the wave section you teleport to on the third floor and have to shoot down onto the second floor. Protected by orange barriers.
+
+[Map]
+- Elevator is 28x14 tiles (16 vertically max), extra space not included. Each space is 20 tiles wide from the elevator. Then followed by 6 black tiles (3 vertically).
+- I'll increase it to 25 tiles from the elevator in all directions, forming the central square (slopes included). Then extend it another 10 tiles each to make separate squares. Then the 2nd and 3rd floors go in between.
+- This'll mean that the map is 110 tiles wide by 92 tiles vertically.
+- Edit: 15 in each side, then 20 separately.
+- Camera pos: x intercept = 872, y intercept = 848, x left = 320, x right = 1456, y up = 400, y down = 1312.
+
+[Planning]
+- When making it, think of it not like a million puzzles (which it'll eventually be), but rather, four different subpuzzles to solve alongside the main puzzle (2nd/3rd floors), then an auxiliary floor (1st) to help with stuff. Remember: Four main puzzles. 2nd floor.
+- The major theme of this final puzzle is not setting stuff up actually (so scratch the earlier), but rather, keeping track of all of the multi-purpose puzzle elments.
+
